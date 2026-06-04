@@ -15,21 +15,22 @@ async def main():
 
         await page.goto(
     "https://border.gov.md/camere-web/palanca-intrare"
-        )
+)
 
-        # Ждём загрузку камеры
-        await page.wait_for_timeout(10000)
+# Ждём загрузку страницы
+await page.wait_for_timeout(5000)
 
-        # Скриншот видимой части страницы
-        await page.screenshot(
-    path="palanka.png",
-    clip={
-        "x": 250,
-        "y": 150,
-        "width": 1125,
-        "height": 670
-    }
-        )
+# Нажимаем кнопку Play
+await page.click("button")
+
+# Ждём запуск видео
+await page.wait_for_timeout(8000)
+
+# Скриншот
+await page.screenshot(
+    path="palanka2.png",
+    full_page=True
+)
 
         await browser.close()
 
