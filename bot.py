@@ -15,11 +15,12 @@ async def main():
             viewport={"width": 1280, "height": 900}
         )
 
-        await page.goto(
-            "https://border.gov.md/camere-web/palanca-intrare",
-            wait_until="domcontentloaded",
-            timeout=60000
-        )
+        response = await page.goto(
+    "https://border.gov.md/camere-web/palanca-intrare",
+    timeout=120000
+)
+
+print(response.status if response else "NO RESPONSE")
 
         await page.wait_for_timeout(8000)
 
