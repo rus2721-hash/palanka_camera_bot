@@ -39,7 +39,7 @@ async def main():
         await bot.send_photo(
             chat_id=CHANNEL,
             photo=photo,
-            caption="📍 Паланка\n📸 Актуальная ситуация на границе"
+            caption="📍 Паланка в Україну\n📸 Актуальна черга на кордоні"
         )
 
 
