@@ -10,17 +10,19 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page(
-            viewport={"width": 1920, "height": 1080}
+            viewport={"width": 1280, "height": 900}
         )
 
         await page.goto(
-            "https://customs.gov.md/ro/traffic?location=palanca",
-            wait_until="networkidle"
+            "https://customs.gov.md/ro/traffic?location=palanca"
         )
 
+        # Ждём загрузку камеры
+        await page.wait_for_timeout(10000)
+
+        # Скриншот видимой части страницы
         await page.screenshot(
-            path="palanka.png",
-            full_page=True
+            path="palanka.png"
         )
 
         await browser.close()
