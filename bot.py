@@ -5,32 +5,44 @@ from playwright.async_api import async_playwright
 
 CHANNEL = "@palanka_chergy"
 
-
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch()
+        browser = await p.chromium.launch(
+            args=["--autoplay-policy=no-user-gesture-required"]
+        )
+
         page = await browser.new_page(
             viewport={"width": 1280, "height": 900}
         )
 
         await page.goto(
-    "https://border.gov.md/camere-web/palanca-intrare"
-)
+            "https://border.gov.md/camere-web/palanca-intrare",
+            wait_until="networkidle"
+        )
 
-# Ждём загрузку страницы
-await page.wait_for_timeout(5000)
+        # Ждём загрузку страницы
+        await page.wait_for_timeout(5000)
 
-# Нажимаем кнопку Play
-await page.click("button")
+        # Нажимаем кнопку Play
+        try:
+            await page.click("button")
+            await page.wait_for_timeout(5000)
+        except:
+            pass
 
-# Ждём запуск видео
-await page.wait_for_timeout(8000)
+        # Дополнительное ожидание видео
+        await page.wait_for_timeout(5000)
 
-# Скриншот
-await page.screenshot(
-    path="palanka2.png",
-    full_page=True
-)
+        # Скриншот области камеры
+        await page.screenshot(
+            path="palanka.png",
+            clip={
+                "x": 200,
+                "y": 250,
+                "width": 900,
+                "height": 520
+            }
+        )
 
         await browser.close()
 
@@ -40,8 +52,7 @@ await page.screenshot(
         await bot.send_photo(
             chat_id=CHANNEL,
             photo=photo,
-            caption="📍 Паланка в Україну\n📸 Актуальна черга на кордоні"
+            caption="📍 Паланка (в'їзд в Молдову)\n📸 Актуальна ситуація на кордоні"
         )
-
 
 asyncio.run(main())
