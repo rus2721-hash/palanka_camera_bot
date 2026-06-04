@@ -22,7 +22,13 @@ async def main():
 
         # Скриншот видимой части страницы
         await page.screenshot(
-            path="palanka.png"
+    path="palanka.png",
+    clip={
+        "x": 250,
+        "y": 150,
+        "width": 1125,
+        "height": 670
+    }
         )
 
         await browser.close()
