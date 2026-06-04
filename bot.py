@@ -21,16 +21,12 @@ args=["--autoplay-policy=no-user-gesture-required"]
         timeout=60000
     )
 
-    # Ждём загрузку страницы
     await page.wait_for_timeout(8000)
 
-    # Клик примерно по центру видеоплеера
     await page.mouse.click(640, 360)
 
-    # Ждём запуск видео
     await page.wait_for_timeout(10000)
 
-    # Скриншот области камеры
     await page.screenshot(
         path="palanka.png",
         clip={
