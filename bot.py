@@ -14,7 +14,7 @@ async def main():
         )
 
         await page.goto(
-            "https://customs.gov.md/ro/traffic?location=palanca"
+    "https://border.gov.md/camere-web/palanca-intrare"
         )
 
         # Ждём загрузку камеры
