@@ -3,6 +3,9 @@ name: Palanka Camera
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: "0,30 5-19 * * *"
+
 jobs:
   send:
     runs-on: ubuntu-latest
