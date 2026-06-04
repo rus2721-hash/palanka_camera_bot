@@ -16,8 +16,9 @@ async def main():
         )
 
         await page.goto(
-            "https://border.gov.md/camere-web/palanca-intrare",
-            wait_until="networkidle"
+    "https://border.gov.md/camere-web/palanca-intrare",
+    wait_until="domcontentloaded",
+    timeout=60000
         )
 
         # Ждём загрузку страницы
