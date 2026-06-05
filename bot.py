@@ -28,8 +28,8 @@ async def main():
     clip={
         "x": 250,
         "y": 150,
-        "width": 1125,
-        "height": 870
+        "width": 1100,
+        "height": 650
     }
         )
 
