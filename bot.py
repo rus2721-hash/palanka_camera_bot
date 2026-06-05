@@ -14,7 +14,9 @@ async def main():
         )
 
         await page.goto(
-    "https://customs.gov.md/ro/traffic?location=palanca"
+    "https://customs.gov.md/ro/traffic?location=palanca",
+    wait_until="domcontentloaded",
+    timeout=120000
 )
 
         # Ждём загрузку камеры
