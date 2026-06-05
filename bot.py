@@ -29,7 +29,7 @@ async def main():
         "x": 250,
         "y": 150,
         "width": 1125,
-        "height": 670
+        "height": 870
     }
         )
 
@@ -41,7 +41,7 @@ async def main():
         await bot.send_photo(
             chat_id=CHANNEL,
             photo=photo,
-            caption="📍 Паланка в Україну\n📸 Актуальна черга на кордоні"
+            caption="📍 Паланка в Україну"
         )
 
 
