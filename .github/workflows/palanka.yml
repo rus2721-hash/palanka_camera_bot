@@ -2,9 +2,8 @@ name: Palanka Camera
 
 on:
 workflow_dispatch:
-
 schedule:
-- cron: "*/5 * * * *"
+- cron: '*/5 * * * *'
 
 jobs:
 send:
@@ -15,7 +14,7 @@ steps:
 
   - uses: actions/setup-python@v5
     with:
-      python-version: "3.11"
+      python-version: '3.11'
 
   - run: pip install -r requirements.txt
 
