@@ -3,7 +3,7 @@ name: Palanka Camera
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   send:
