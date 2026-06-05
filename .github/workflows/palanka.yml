@@ -2,14 +2,19 @@ name: Palanka Camera
 
 on:
   workflow_dispatch:
+
   schedule:
-    - cron: '25,50 * * * *'
+    - cron: '0,30 * * * *'
+
+concurrency:
+  group: camera-bot
+  cancel-in-progress: true
 
 jobs:
   send:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    
+
     steps:
       - uses: actions/checkout@v4
 
