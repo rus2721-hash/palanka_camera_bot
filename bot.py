@@ -5,37 +5,30 @@ from playwright.async_api import async_playwright
 
 CHANNEL = "@palanka_chergy"
 
+
 async def main():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            args=["--autoplay-policy=no-user-gesture-required"]
-        )
-
+        browser = await p.chromium.launch()
         page = await browser.new_page(
             viewport={"width": 1280, "height": 900}
         )
 
-        response = await page.goto(
-    "https://border.gov.md/camere-web/palanca-intrare",
-    timeout=120000
+        await page.goto(
+    "https://customs.gov.md/ro/traffic?location=palanca"
 )
 
-print(response.status if response else "NO RESPONSE")
-
-        await page.wait_for_timeout(8000)
-
-        await page.mouse.click(640, 360)
-
+        # Ждём загрузку камеры
         await page.wait_for_timeout(10000)
 
+        # Скриншот видимой части страницы
         await page.screenshot(
-            path="palanka.png",
-            clip={
-                "x": 200,
-                "y": 250,
-                "width": 900,
-                "height": 520
-            }
+    path="palanka.png",
+    clip={
+        "x": 250,
+        "y": 150,
+        "width": 1125,
+        "height": 670
+    }
         )
 
         await browser.close()
@@ -46,7 +39,8 @@ print(response.status if response else "NO RESPONSE")
         await bot.send_photo(
             chat_id=CHANNEL,
             photo=photo,
-            caption="📍 Паланка (в'їзд в Молдову)\n📸 Актуальна ситуація на кордоні"
+            caption="📍 Паланка в Україну\n📸 Актуальна черга на кордоні"
         )
+
 
 asyncio.run(main())
