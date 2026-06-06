@@ -26,10 +26,10 @@ async def main():
         await page.screenshot(
     path="palanka.png",
     clip={
-        "x": 250,
+        "x": 260,
         "y": 150,
         "width": 1100,
-        "height": 650
+        "height": 640
     }
         )
 
