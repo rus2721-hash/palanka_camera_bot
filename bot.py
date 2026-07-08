@@ -41,7 +41,7 @@ async def main():
         await bot.send_photo(
             chat_id=CHANNEL,
             photo=photo,
-            caption="📍 Паланка в Україну"
+            caption="📍 Паланка → В'їзд в Україну"
         )
 
 
